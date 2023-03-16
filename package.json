@@ -1,0 +1,19 @@
+{
+  "name": "mern-emp-assignment",
+  "version": "1.0.0",
+  "description": "Employee Dashboard App using MERN Stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhananjayThomble/mern-emp-assignment.git"
+  },
+  "author": "Dhananjay Thomble",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DhananjayThomble/mern-emp-assignment/issues"
+  },
+  "homepage": "https://github.com/DhananjayThomble/mern-emp-assignment#readme"
+}
