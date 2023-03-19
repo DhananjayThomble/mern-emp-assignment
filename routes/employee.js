@@ -17,7 +17,6 @@ router.get("/", async (req, res) => {
 
 // insert new employee
 router.post("/", async (req, res) => {
-  // generate unuique id for new employee using mongoose, convert to string
   const empId = new mongoose.Types.ObjectId().toString();
   // console.log(empId);
   const employee = new Employee({
@@ -63,7 +62,7 @@ router.patch("/:id", getEmployee, async (req, res) => {
 
 // getEmployee middleware
 async function getEmployee(req, res, next) {
-    console.log(req.params.id);
+  // console.log(req.params.id);
   let employee;
   try {
     employee = await Employee.findOne({ id: req.params.id });
