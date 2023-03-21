@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import EmpGrid from "./components/EmpGrid";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { createContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+const EmpContext = createContext(null);
 function App() {
+  const [empList, setEmpList] = useState([]);
+  // export EmpContext
+  useEffect(() => {
+    axios.get("http://localhost:3004/employees").then((res) => {
+      setEmpList(res.data);
+    });
+  }, []);
+
+  // console.log(empList);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <EmpContext.Provider value={empList}>
+        <EmpGrid />
+        <ToastContainer />
+      </EmpContext.Provider>
+    </>
   );
 }
 
 export default App;
+export { EmpContext };

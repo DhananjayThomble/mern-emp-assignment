@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
 
 // insert new employee
 router.post("/", async (req, res) => {
+  console.log(req.body);
   const empId = new mongoose.Types.ObjectId().toString();
   // console.log(empId);
   const employee = new Employee({
@@ -26,6 +27,8 @@ router.post("/", async (req, res) => {
     age: req.body.age,
     department: req.body.department,
     status: req.body.status,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
   });
 
   try {
@@ -52,11 +55,27 @@ router.patch("/:id", getEmployee, async (req, res) => {
   if (req.body.status != null) {
     res.employee.status = req.body.status;
   }
+  if (req.body.latitude != null) {
+    res.employee.latitude = req.body.latitude;
+  }
+  if (req.body.longitude != null) {
+    res.employee.longitude = req.body.longitude;
+  }
   try {
     const updatedEmployee = await res.employee.save();
-    res.json(updatedEmployee);
+    res.status(200).json(updatedEmployee);
   } catch (err) {
     res.status(400).json({ message: err.message });
+  }
+});
+
+// delete employee by id
+router.delete("/:id", async (req, res) => {
+  try {
+    await Employee.deleteOne({ id: req.params.id });
+    res.status(200).json({ message: "Employee deleted" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 

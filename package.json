@@ -23,10 +23,15 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "leaflet": "^1.9.3",
     "mongoose": "^7.0.2",
     "nodemon": "^2.0.21",
     "prettier": "^2.8.4",
+    "react-leaflet": "^4.2.1",
     "swagger-ui-express": "^4.6.2",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
   }
 }
